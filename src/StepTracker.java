@@ -60,7 +60,7 @@ public class StepTracker {
         int bestSeries = 0;
         int series = 0;
         for (int i=0; i<stepsByDay.length;i++){
-            if (stepsByDay[i]>goalOfSteps){
+            if (stepsByDay[i]>=goalOfSteps){
                 series++;
                 if (stepsByDay[i+1]<goalOfSteps){
                     if (bestSeries<series){
@@ -70,7 +70,6 @@ public class StepTracker {
                 }
             }
         }
-
         return bestSeries;
     }
 
