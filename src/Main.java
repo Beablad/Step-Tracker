@@ -40,8 +40,8 @@ public class Main {
             } else {
                 System.out.println("Такой команды еще нет.");
             }
-                }
         }
+    }
 
         public static void printNamesOfMonth(){
             System.out.println("За какой месяц нужно ввести шаги?");

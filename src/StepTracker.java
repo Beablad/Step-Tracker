@@ -11,20 +11,21 @@ public class StepTracker {
     }
 
     void printStats(int month){
-        stepsByDay = stepsByMonth.get(month);
-        for (int i=0; i<stepsByDay.length; i++){
-            System.out.print((i+1) + " день: " + stepsByDay[i] + ", ");
-        }
+            stepsByDay = stepsByMonth.get(month);
+            for (int i = 0; i < stepsByDay.length; i++) {
+                System.out.print((i + 1) + " день: " + stepsByDay[i] + ", ");
+            }
     }
 
-    double maxStepsPerMonth (int month){
-        stepsByDay = stepsByMonth.get(month);
-        int maxSteps = 0;
-        for (int i=0; i<stepsByDay.length; i++){
-            if (stepsByDay[i]>maxSteps){
-                maxSteps=stepsByDay[i];
+
+    double maxStepsPerMonth (int month) {
+            int maxSteps = 0;
+            stepsByDay = stepsByMonth.get(month);
+            for (int i = 0; i < stepsByDay.length; i++) {
+                if (stepsByDay[i] > maxSteps) {
+                    maxSteps = stepsByDay[i];
+                }
             }
-        }
         return maxSteps;
     }
 
@@ -32,22 +33,24 @@ public class StepTracker {
         int sumSteps = 0;
         int days = 0;
         stepsByDay = stepsByMonth.get(month);
-        for (int i=0; i<stepsByDay.length; i++){
-            if (stepsByDay[i]!=0){
-                sumSteps += stepsByDay[i];
-                days++;
+            for (int i = 0; i < stepsByDay.length; i++) {
+                if (stepsByDay[i] != 0) {
+                    sumSteps += stepsByDay[i];
+                    days++;
+                }
             }
-        }
+
         return sumSteps/30;
     }
 
     int sumOfStepsByMonth (int month) {
-        sumSteps = 0;
-        stepsByDay = stepsByMonth.get(month);
-        for (int i=0; i<stepsByDay.length;i++){
-            sumSteps+=stepsByDay[i];
-        }
-        return sumSteps;
+            sumSteps = 0;
+            stepsByDay = stepsByMonth.get(month);
+            for (int i = 0; i < stepsByDay.length; i++) {
+                sumSteps += stepsByDay[i];
+                return sumSteps;
+            }
+            return sumSteps;
     }
 
     int bestSeriesOfGoal (int month){
