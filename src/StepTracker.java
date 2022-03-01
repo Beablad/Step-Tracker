@@ -13,7 +13,7 @@ public class StepTracker {
     void printStats(int month){
             stepsByDay = stepsByMonth.get(month);
             for (int i = 0; i < stepsByDay.length; i++) {
-                System.out.print((i + 1) + " день: " + stepsByDay[i] + ", ");
+                System.out.println((i + 1) + " день: " + stepsByDay[i] + ", ");
             }
     }
 

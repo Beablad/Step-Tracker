@@ -11,6 +11,7 @@ public class Main {
             int command = scanner.nextInt();
             System.out.println(command);
             if (command==1) {
+                System.out.println("За какой месяц нужно ввести шаги?");
                 printNamesOfMonth();
                 int month = scanner.nextInt();
                 System.out.println("За какой день?");
@@ -22,6 +23,7 @@ public class Main {
                 }
             } else if (command == 2){
                 System.out.println("Введите месяц, за который нужна статистика");
+                printNamesOfMonth();
                 int month = scanner.nextInt();
                 stepTracker.printStats(month);
                 System.out.println("Суммарно было пройдено: " + stepTracker.sumOfStepsByMonth(month)+ " шагов.");//кол-во шагов за месяц
@@ -44,7 +46,7 @@ public class Main {
     }
 
         public static void printNamesOfMonth(){
-            System.out.println("За какой месяц нужно ввести шаги?");
+
             System.out.println("1-Январь");
             System.out.println("2-Февраль");
             System.out.println("3-Март");
