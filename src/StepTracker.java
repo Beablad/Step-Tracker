@@ -5,6 +5,7 @@ public class StepTracker {
     int goalOfSteps = 10000;
     int[] stepsByDay = new int[30];
     Integer sumSteps = 0;
+
     public void addDataToMap (int month, int day, int steps){
         stepsByDay[day] = steps;
         stepsByMonth.put(month,stepsByDay);
@@ -26,8 +27,9 @@ public class StepTracker {
                     maxSteps = stepsByDay[i];
                 }
             }
-        return maxSteps;
-    }
+            return maxSteps;
+        }
+
 
     int avgStepsByMonth (int month){
         int sumSteps = 0;
@@ -72,4 +74,11 @@ public class StepTracker {
         return bestSeries;
     }
 
+    boolean isMapEmpty (int month) {
+        if (stepsByMonth.size()!=0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

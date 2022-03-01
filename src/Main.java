@@ -25,14 +25,17 @@ public class Main {
                 System.out.println("Введите месяц, за который нужна статистика");
                 printNamesOfMonth();
                 int month = scanner.nextInt();
-                stepTracker.printStats(month);
-                System.out.println("Суммарно было пройдено: " + stepTracker.sumOfStepsByMonth(month)+ " шагов.");//кол-во шагов за месяц
-                System.out.println("Максимальное количество шагов за месяц: "+stepTracker.maxStepsPerMonth(month));//максимальное кол-во шагов
-                System.out.println("Среднее количество шагов за месяц: "+ stepTracker.avgStepsByMonth(month));//среднее кол-во
-                System.out.println("Пройденная дистанция " + converter.trackerOfDist(stepTracker.sumOfStepsByMonth(month)));//пройденная дистанция
-                System.out.println("Всего было потрачено килокалорий: " + converter.trackerOfKkal(stepTracker.sumOfStepsByMonth(month)));//кол-во каллорий
-                System.out.println ("Лучшая серия выполнения цели: " + stepTracker.bestSeriesOfGoal(month));//лучшая серия
-
+                if (stepTracker.isMapEmpty(month)) {
+                    stepTracker.printStats(month);
+                    System.out.println("Суммарно было пройдено: " + stepTracker.sumOfStepsByMonth(month) + " шагов.");//кол-во шагов за месяц
+                    System.out.println("Максимальное количество шагов за месяц: " + stepTracker.maxStepsPerMonth(month));//максимальное кол-во шагов
+                    System.out.println("Среднее количество шагов за месяц: " + stepTracker.avgStepsByMonth(month));//среднее кол-во
+                    System.out.println("Пройденная дистанция " + converter.trackerOfDist(stepTracker.sumOfStepsByMonth(month)));//пройденная дистанция
+                    System.out.println("Всего было потрачено килокалорий: " + converter.trackerOfKkal(stepTracker.sumOfStepsByMonth(month)));//кол-во каллорий
+                    System.out.println("Лучшая серия выполнения цели: " + stepTracker.bestSeriesOfGoal(month));//лучшая серия
+                } else {
+                    System.out.println("За этот месяц нет данных");
+                }
             } else  if (command ==3){
                 System.out.println("Введите новую цель по количеству шагов");
                 stepTracker.goalOfSteps = scanner.nextInt();
