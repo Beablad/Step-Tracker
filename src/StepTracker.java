@@ -5,15 +5,20 @@ public class StepTracker {
     int goalOfSteps = 10000;
 
 
-    public void addDataToMap (int month, int day, int steps){
-        int[] stepsByDay = new int[30];
-        stepsByDay[day] = steps;
-        stepsByMonth.put(month,stepsByDay);
+    public void addDataToMap (int month, int day, int steps) {
+        if (stepsByMonth.get(month) != null) {
+            int[] stepsByDay = stepsByMonth.get(month);
+            stepsByDay[day] = steps;
+            stepsByMonth.put(month, stepsByDay);
+        } else {
+            int[] stepsByDay = new int[30];
+            stepsByDay[day] = steps;
+            stepsByMonth.put(month, stepsByDay);
+        }
     }
 
     void printStats(int month){
-            int[] stepsByDay = new int[30];
-            stepsByDay = stepsByMonth.get(month);
+            int[] stepsByDay = stepsByMonth.get(month);
             for (int i = 0; i < stepsByDay.length; i++) {
                 System.out.println((i + 1) + " день: " + stepsByDay[i] + ", ");
             }
@@ -22,8 +27,7 @@ public class StepTracker {
 
     double maxStepsPerMonth (int month) {
             int maxSteps = 0;
-            int[] stepsByDay = new int[30];
-            stepsByDay = stepsByMonth.get(month);
+            int[] stepsByDay = stepsByMonth.get(month);
             for (int i = 0; i < stepsByDay.length; i++) {
                 if (stepsByDay[i] > maxSteps) {
                     maxSteps = stepsByDay[i];
@@ -35,23 +39,18 @@ public class StepTracker {
 
     int avgStepsByMonth (int month){
         int sumSteps = 0;
-        int days = 0;
-        int[] stepsByDay = new int[30];
-        stepsByDay = stepsByMonth.get(month);
+        int[] stepsByDay = stepsByMonth.get(month);
             for (int i = 0; i < stepsByDay.length; i++) {
                 if (stepsByDay[i] != 0) {
                     sumSteps += stepsByDay[i];
-                    days++;
                 }
             }
-
         return sumSteps/30;
     }
 
     int sumOfStepsByMonth (int month) {
             int sumSteps = 0;
-            int[] stepsByDay = new int[30];
-            stepsByDay = stepsByMonth.get(month);
+            int[] stepsByDay = stepsByMonth.get(month);
             for (int i = 0; i < stepsByDay.length; i++) {
                 sumSteps += stepsByDay[i];
             }
@@ -59,8 +58,7 @@ public class StepTracker {
     }
 
     int bestSeriesOfGoal (int month){
-        int[] stepsByDay = new int[30];
-        stepsByDay= stepsByMonth.get(month);
+        int[] stepsByDay = stepsByMonth.get(month);
         int bestSeries = 0;
         int series = 0;
         for (int i=0; i<stepsByDay.length;i++){
@@ -78,10 +76,6 @@ public class StepTracker {
     }
 
     boolean isMapNotEmpty(int month) {
-        if (stepsByMonth.get(month)!=null){
-            return true;
-        } else {
-            return false;
-        }
+            return stepsByMonth.get(month)!=null;
     }
 }
