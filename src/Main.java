@@ -46,7 +46,7 @@ public class Main {
         printNamesOfMonth();
         int month = scanner.nextInt();
         if (stepTracker.isMapNotEmpty(month)) {
-            stepTracker.printStats(month);
+            stepTracker.printStatsOfStepsByMonth(month);
             System.out.println("Суммарно было пройдено: " + stepTracker.sumOfStepsByMonth(month) + " шагов");//кол-во шагов за месяц
             System.out.println("Максимальное количество шагов за месяц: " + stepTracker.maxStepsPerMonth(month));//максимальное кол-во шагов
             System.out.println("Среднее количество шагов за месяц: " + stepTracker.avgStepsByMonth(month));//среднее кол-во

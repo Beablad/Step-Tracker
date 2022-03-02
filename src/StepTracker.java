@@ -17,7 +17,7 @@ public class StepTracker {
         }
     }
 
-    void printStats(int month){
+    void printStatsOfStepsByMonth(int month){
             int[] stepsByDay = stepsByMonth.get(month);
             for (int i = 0; i < stepsByDay.length; i++) {
                 System.out.println((i + 1) + " день: " + stepsByDay[i] + ", ");
