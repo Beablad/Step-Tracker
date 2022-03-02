@@ -1,19 +1,19 @@
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.HashMap;
 
 public class StepTracker {
     HashMap<Integer, int[]> stepsByMonth = new HashMap<>();
     int goalOfSteps = 10000;
-    int[] stepsByDay = new int[30];
-    Integer sumSteps = 0;
+    //int[] stepsByDay = new int[30];
+
 
     public void addDataToMap (int month, int day, int steps){
+        int[] stepsByDay = new int[30];
         stepsByDay[day] = steps;
         stepsByMonth.put(month,stepsByDay);
     }
 
     void printStats(int month){
+            int[] stepsByDay = new int[30];
             stepsByDay = stepsByMonth.get(month);
             for (int i = 0; i < stepsByDay.length; i++) {
                 System.out.println((i + 1) + " день: " + stepsByDay[i] + ", ");
@@ -23,6 +23,7 @@ public class StepTracker {
 
     double maxStepsPerMonth (int month) {
             int maxSteps = 0;
+            int[] stepsByDay = new int[30];
             stepsByDay = stepsByMonth.get(month);
             for (int i = 0; i < stepsByDay.length; i++) {
                 if (stepsByDay[i] > maxSteps) {
@@ -36,6 +37,7 @@ public class StepTracker {
     int avgStepsByMonth (int month){
         int sumSteps = 0;
         int days = 0;
+        int[] stepsByDay = new int[30];
         stepsByDay = stepsByMonth.get(month);
             for (int i = 0; i < stepsByDay.length; i++) {
                 if (stepsByDay[i] != 0) {
@@ -48,16 +50,17 @@ public class StepTracker {
     }
 
     int sumOfStepsByMonth (int month) {
-            sumSteps = 0;
+            int sumSteps = 0;
+            int[] stepsByDay = new int[30];
             stepsByDay = stepsByMonth.get(month);
             for (int i = 0; i < stepsByDay.length; i++) {
                 sumSteps += stepsByDay[i];
-                return sumSteps;
             }
             return sumSteps;
     }
 
     int bestSeriesOfGoal (int month){
+        int[] stepsByDay = new int[30];
         stepsByDay= stepsByMonth.get(month);
         int bestSeries = 0;
         int series = 0;
@@ -75,8 +78,8 @@ public class StepTracker {
         return bestSeries;
     }
 
-    boolean isMapEmpty (int month) {
-        if (stepsByMonth.size()!=0){
+    boolean isMapNotEmpty(int month) {
+        if (stepsByMonth.get(month)!=null){
             return true;
         } else {
             return false;

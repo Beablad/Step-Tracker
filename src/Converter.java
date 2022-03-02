@@ -1,5 +1,4 @@
 public class Converter {
-    StepTracker stepTracker = new StepTracker();
     double lengthOfStep = 0.75;
     double kalPerStep = 50;
 

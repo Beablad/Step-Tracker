@@ -11,31 +11,9 @@ public class Main {
             int command = scanner.nextInt();
             System.out.println(command);
             if (command==1) {
-                System.out.println("За какой месяц нужно ввести шаги?");
-                printNamesOfMonth();
-                int month = scanner.nextInt();
-                System.out.println("За какой день?");
-                int day = scanner.nextInt();
-                System.out.println("Введите колчество шагов");
-                int steps = scanner.nextInt();
-                if (steps >= 0) {
-                    stepTracker.addDataToMap(month, --day, steps);
-                }
+                addDataToMap(scanner, stepTracker);
             } else if (command == 2){
-                System.out.println("Введите месяц, за который нужна статистика");
-                printNamesOfMonth();
-                int month = scanner.nextInt();
-                if (stepTracker.isMapEmpty(month)) {
-                    stepTracker.printStats(month);
-                    System.out.println("Суммарно было пройдено: " + stepTracker.sumOfStepsByMonth(month) + " шагов.");//кол-во шагов за месяц
-                    System.out.println("Максимальное количество шагов за месяц: " + stepTracker.maxStepsPerMonth(month));//максимальное кол-во шагов
-                    System.out.println("Среднее количество шагов за месяц: " + stepTracker.avgStepsByMonth(month));//среднее кол-во
-                    System.out.println("Пройденная дистанция " + converter.trackerOfDist(stepTracker.sumOfStepsByMonth(month)));//пройденная дистанция
-                    System.out.println("Всего было потрачено килокалорий: " + converter.trackerOfKkal(stepTracker.sumOfStepsByMonth(month)));//кол-во каллорий
-                    System.out.println("Лучшая серия выполнения цели: " + stepTracker.bestSeriesOfGoal(month));//лучшая серия
-                } else {
-                    System.out.println("За этот месяц нет данных");
-                }
+                printStats(scanner, stepTracker, converter);
             } else  if (command ==3){
                 System.out.println("Введите новую цель по количеству шагов");
                 stepTracker.goalOfSteps = scanner.nextInt();
@@ -48,7 +26,39 @@ public class Main {
         }
     }
 
-        public static void printNamesOfMonth(){
+    private static void addDataToMap(Scanner scanner, StepTracker stepTracker) {
+        System.out.println("За какой месяц нужно ввести шаги?");
+        printNamesOfMonth();
+        int month = scanner.nextInt();
+        System.out.println("За какой день?");
+        int day = scanner.nextInt();
+        System.out.println("Введите колчество шагов");
+        int steps = scanner.nextInt();
+        if (steps >= 0) {
+            stepTracker.addDataToMap(month, --day, steps);
+        } else {
+            System.out.println("Введено отрицательно число");
+        }
+    }
+
+    private static void printStats(Scanner scanner, StepTracker stepTracker, Converter converter) {
+        System.out.println("Введите месяц, за который нужна статистика");
+        printNamesOfMonth();
+        int month = scanner.nextInt();
+        if (stepTracker.isMapNotEmpty(month)) {
+            stepTracker.printStats(month);
+            System.out.println("Суммарно было пройдено: " + stepTracker.sumOfStepsByMonth(month) + " шагов.");//кол-во шагов за месяц
+            System.out.println("Максимальное количество шагов за месяц: " + stepTracker.maxStepsPerMonth(month));//максимальное кол-во шагов
+            System.out.println("Среднее количество шагов за месяц: " + stepTracker.avgStepsByMonth(month));//среднее кол-во
+            System.out.println("Пройденная дистанция " + converter.trackerOfDist(stepTracker.sumOfStepsByMonth(month)));//пройденная дистанция
+            System.out.println("Всего было потрачено килокалорий: " + converter.trackerOfKkal(stepTracker.sumOfStepsByMonth(month)));//кол-во каллорий
+            System.out.println("Лучшая серия выполнения цели: " + stepTracker.bestSeriesOfGoal(month));//лучшая серия
+        } else {
+            System.out.println("За этот месяц нет данных");
+        }
+    }
+
+    public static void printNamesOfMonth(){
 
             System.out.println("1-Январь");
             System.out.println("2-Февраль");
