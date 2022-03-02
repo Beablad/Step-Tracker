@@ -47,10 +47,10 @@ public class Main {
         int month = scanner.nextInt();
         if (stepTracker.isMapNotEmpty(month)) {
             stepTracker.printStats(month);
-            System.out.println("Суммарно было пройдено: " + stepTracker.sumOfStepsByMonth(month) + " шагов.");//кол-во шагов за месяц
+            System.out.println("Суммарно было пройдено: " + stepTracker.sumOfStepsByMonth(month) + " шагов");//кол-во шагов за месяц
             System.out.println("Максимальное количество шагов за месяц: " + stepTracker.maxStepsPerMonth(month));//максимальное кол-во шагов
             System.out.println("Среднее количество шагов за месяц: " + stepTracker.avgStepsByMonth(month));//среднее кол-во
-            System.out.println("Пройденная дистанция " + converter.trackerOfDist(stepTracker.sumOfStepsByMonth(month)));//пройденная дистанция
+            System.out.println("Пройденная дистанция " + converter.trackerOfDist(stepTracker.sumOfStepsByMonth(month))+" метров");//пройденная дистанция
             System.out.println("Всего было потрачено килокалорий: " + converter.trackerOfKkal(stepTracker.sumOfStepsByMonth(month)));//кол-во каллорий
             System.out.println("Лучшая серия выполнения цели: " + stepTracker.bestSeriesOfGoal(month));//лучшая серия
         } else {

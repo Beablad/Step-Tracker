@@ -3,7 +3,6 @@ import java.util.HashMap;
 public class StepTracker {
     HashMap<Integer, int[]> stepsByMonth = new HashMap<>();
     int goalOfSteps = 10000;
-    //int[] stepsByDay = new int[30];
 
 
     public void addDataToMap (int month, int day, int steps){
